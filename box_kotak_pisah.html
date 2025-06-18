@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Box Kotak Pisah</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <div class="sidebar">
+        <h2>Menu Kalkulator</h2>
+        <ul>
+            <li><a href="index.html">Kertas Potongan</a></li>
+            <li><a href="box_kotak_pisah.html" class="active">Box Kotak Pisah</a></li>
+            <li><a href="#">Box Sambung</a></li>
+            <li><a href="#">Lunchbox</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <h1>Kalkulator Box Kotak Pisah</h1>
+            <p>Hitung kebutuhan kertas untuk box dengan tutup terpisah.</p>
+
+            <div class="input-section">
+                <h2>Dimensi Box (cm) - Badan</h2>
+                <label for="panjangBadan">Panjang (P):</label>
+                <input type="number" id="panjangBadan" min="1" value="20" step="0.1">
+                <label for="lebarBadan">Lebar (L):</label>
+                <input type="number" id="lebarBadan" min="1" value="15" step="0.1">
+                <label for="tinggiBadan">Tinggi (T):</label>
+                <input type="number" id="tinggiBadan" min="1" value="5" step="0.1">
+            </div>
+
+            <div class="input-section">
+                <h2>Dimensi Tutup Box (cm) - Tutup</h2>
+                <p>Masukkan dimensi ini jika tutup memiliki ukuran dasar dan tinggi flap yang spesifik.</p>
+                <p>Jika tidak, sistem akan menghitung dimensi tutup secara otomatis berdasarkan dimensi badan box dengan tambahan overhang dan tinggi flap standar.</p>
+                <label for="panjangTutupDasar">Panjang Dasar Tutup (Pd):</label>
+                <input type="number" id="panjangTutupDasar" min="0" value="" step="0.1" placeholder="Opsional">
+                <label for="lebarTutupDasar">Lebar Dasar Tutup (Ld):</label>
+                <input type="number" id="lebarTutupDasar" min="0" value="" step="0.1" placeholder="Opsional">
+                <label for="tinggiFlapTutup">Tinggi Flap Tutup (Td):</label>
+                <input type="number" id="tinggiFlapTutup" min="0" value="" step="0.1" placeholder="Opsional">
+            </div>
+            
+            <button id="calculateBoxBtn">Hitung Ukuran Kertas</button>
+
+            <div class="results-section">
+                <h2>Hasil Ukuran Kertas</h2>
+                <div class="result-card">
+                    <h3>Badan Box</h3>
+                    <p>Panjang Kertas: <strong id="badanPanjang">0</strong> cm</p>
+                    <p>Lebar Kertas: <strong id="badanLebar">0</strong> cm</p>
+                    <div class="visualization-container" id="visBadanBox" style="width: 100%; height: 150px;"></div>
+                </div>
+                <div class="result-card">
+                    <h3>Tutup Box</h3>
+                    <p>Panjang Kertas: <strong id="tutupPanjang">0</strong> cm</p>
+                    <p>Lebar Kertas: <strong id="tutupLebar">0</strong> cm</p>
+                    <div class="visualization-container" id="visTutupBox" style="width: 100%; height: 150px;"></div>
+                </div>
+            </div>
+
+            <div class="input-section calculate-from-big-paper">
+                <h2>Potongan dari Kertas Besar (79 x 109 cm)</h2>
+                <p>Kertas Besar: <strong>109 cm x 79 cm</strong> (ukuran standar yang Anda sebutkan)</p>
+                
+                <div class="cutting-results">
+                    <div class="cutting-result-item">
+                        <p>Jumlah **Badan Box** dari 1 lembar: <strong id="countBadanDariKertasBesar">0</strong> lembar</p>
+                        <div class="visualization-container" id="visKertasBesarBadan"></div>
+                        <div id="detailsBadanBox" class="cutting-details"></div>
+                    </div>
+                    <div class="cutting-result-item">
+                        <p>Jumlah **Tutup Box** dari 1 lembar: <strong id="countTutupDariKertasBesar">0</strong> lembar</p>
+                        <div class="visualization-container" id="visKertasBesarTutup"></div>
+                        <div id="detailsTutupBox" class="cutting-details"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="box_kotak_pisah.js"></script>
+</body>
+</html>
