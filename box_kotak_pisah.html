@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Box Kotak Pisah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Menu Kalkulator</h2>
+        <ul>
+            <li><a href="index.html">Kertas Potongan</a></li>
+            <li><a href="box_kotak_pisah.html" class="active">Box Kotak Pisah</a></li>
+            <li><a href="box_sambung.html">Box Sambung</a></li>
+            <li><a href="lunchbox.html">Lunchbox</a></li>
+            <li><a href="paperbag.html">Paperbag</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <h1>Kalkulator Box Kotak Pisah</h1>
+            <p>Ukuran kertas besar: <strong>79 cm x 109 cm</strong></p>
+
+            <div class="input-section">
+                <h2>Input Dimensi Box Utama (Badan)</h2>
+                <label for="boxP">Panjang (cm):</label>
+                <input type="number" id="boxP" min="1" value="20" step="0.1">
+                <label for="boxL">Lebar (cm):</label>
+                <input type="number" id="boxL" min="1" value="15" step="0.1">
+                <label for="boxT">Tinggi (cm):</label>
+                <input type="number" id="boxT" min="1" value="5" step="0.1">
+                <button id="calculateBtn">Hitung Semua Potongan Box</button>
+            </div>
+
+            <div class="input-section">
+                <h2>Input Dimensi Tutup Box (Opsional)</h2>
+                <p>Biarkan kosong untuk perhitungan otomatis berdasarkan dimensi badan box.</p>
+                <label for="panjangTutupDasar">Panjang Dasar Tutup (cm):</label>
+                <input type="number" id="panjangTutupDasar" min="1" step="0.1" placeholder="Otomatis jika kosong">
+                <label for="lebarTutupDasar">Lebar Dasar Tutup (cm):</label>
+                <input type="number" id="lebarTutupDasar" min="1" step="0.1" placeholder="Otomatis jika kosong">
+                <label for="tinggiFlapTutup">Tinggi Flap Tutup (cm):</label>
+                <input type="number" id="tinggiFlapTutup" min="1" step="0.1" placeholder="Otomatis jika kosong">
+            </div>
+
+            <div class="results-section">
+                <h2>Hasil Perhitungan Badan Box</h2>
+                <div class="result-card">
+                    <h3>Potongan Bersih Badan Box</h3>
+                    <div class="size-inputs">
+                        <label>P:</label>
+                        <input type="number" id="potongWidthBadan" min="1" step="0.1" readonly>
+                        <label>L:</label>
+                        <input type="number" id="potongHeightBadan" min="1" step="0.1" readonly>
+                    </div>
+                    <p>Jumlah: <strong id="resultPotongBadan">0</strong> lembar</p>
+                    <div class="visualization-container" id="visPotongBadan"></div>
+                </div>
+                <div class="result-card">
+                    <h3>Area Cetak Badan Box (+0.5cm setiap sisi dari Potongan Bersih)</h3>
+                    <div class="size-inputs">
+                        <label>P:</label>
+                        <input type="number" id="cetakWidthBadan" min="1" step="0.1">
+                        <label>L:</label>
+                        <input type="number" id="cetakHeightBadan" min="1" step="0.1">
+                    </div>
+                    <p>Jumlah: <strong id="resultCetakBadan">0</strong> lembar</p>
+                    <button class="update-btn" data-target="cetak" data-part="Badan">Update Area Cetak</button>
+                    <div class="visualization-container" id="visCetakBadan"></div>
+                </div>
+                <div class="result-card">
+                    <h3>Potongan Kertas Badan Box (+0.5cm setiap sisi dari Area Cetak)</h3>
+                    <div class="size-inputs">
+                        <label>P:</label>
+                        <input type="number" id="kertasWidthBadan" min="1" step="0.1">
+                        <label>L:</label>
+                        <input type="number" id="kertasHeightBadan" min="1" step="0.1">
+                    </div>
+                    <p>Jumlah: <strong id="resultKertasBadan">0</strong> lembar</p>
+                    <button class="update-btn" data-target="kertas" data-part="Badan">Update Potongan Kertas</button>
+                    <div class="visualization-container" id="visKertasBadan"></div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2>Hasil Perhitungan Tutup Box</h2>
+                <div class="result-card">
+                    <h3>Potongan Bersih Tutup Box</h3>
+                    <div class="size-inputs">
+                        <label>P:</label>
+                        <input type="number" id="potongWidthTutup" min="1" step="0.1" readonly>
+                        <label>L:</label>
+                        <input type="number" id="potongHeightTutup" min="1" step="0.1" readonly>
+                    </div>
+                    <p>Jumlah: <strong id="resultPotongTutup">0</strong> lembar</p>
+                    <div class="visualization-container" id="visPotongTutup"></div>
+                </div>
+                <div class="result-card">
+                    <h3>Area Cetak Tutup Box (+0.5cm setiap sisi dari Potongan Bersih)</h3>
+                    <div class="size-inputs">
+                        <label>P:</label>
+                        <input type="number" id="cetakWidthTutup" min="1" step="0.1">
+                        <label>L:</label>
+                        <input type="number" id="cetakHeightTutup" min="1" step="0.1">
+                    </div>
+                    <p>Jumlah: <strong id="resultCetakTutup">0</strong> lembar</p>
+                    <button class="update-btn" data-target="cetak" data-part="Tutup">Update Area Cetak</button>
+                    <div class="visualization-container" id="visCetakTutup"></div>
+                </div>
+                <div class="result-card">
+                    <h3>Potongan Kertas Tutup Box (+0.5cm setiap sisi dari Area Cetak)</h3>
+                    <div class="size-inputs">
+                        <label>P:</label>
+                        <input type="number" id="kertasWidthTutup" min="1" step="0.1">
+                        <label>L:</label>
+                        <input type="number" id="kertasHeightTutup" min="1" step="0.1">
+                    </div>
+                    <p>Jumlah: <strong id="resultKertasTutup">0</strong> lembar</p>
+                    <button class="update-btn" data-target="kertas" data-part="Tutup">Update Potongan Kertas</button>
+                    <div class="visualization-container" id="visKertasTutup"></div>
+                </div>
+            </div>
+
+            <div class="final-result-section">
+                <h2>Hasil Potongan dari Kertas Besar (79cm x 109cm)</h2>
+                <div class="result-card">
+                    <h3>Badan Box dari Kertas Besar</h3>
+                    <p>Jumlah: <strong id="countBadanDariKertasBesar">0</strong> lembar</p>
+                    <p class="details" id="detailsBadanBox"></p>
+                    <div class="visualization-container" id="visKertasBesarBadan"></div>
+                </div>
+                 <div class="result-card">
+                    <h3>Tutup Box dari Kertas Besar</h3>
+                    <p>Jumlah: <strong id="countTutupDariKertasBesar">0</strong> lembar</p>
+                    <p class="details" id="detailsTutupBox"></p>
+                    <div class="visualization-container" id="visKertasBesarTutup"></div>
+                </div>
+                <div class="total-box-count">
+                    <h3>Total Box Kotak Pisah yang Dihasilkan</h3>
+                    <p>Dari satu lembar kertas besar, Anda bisa membuat <strong id="finalBoxCount">0</strong> set Box Kotak Pisah (Badan & Tutup).</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

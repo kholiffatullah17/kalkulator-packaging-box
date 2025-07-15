@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Lunchbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Menu Kalkulator</h2>
+        <ul>
+            <li><a href="index.html">Kertas Potongan</a></li>
+            <li><a href="box_kotak_pisah.html">Box Kotak Pisah</a></li>
+            <li><a href="box_sambung.html">Box Sambung</a></li>
+            <li><a href="lunchbox.html" class="active">Lunchbox</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <h1>Kalkulator Lunchbox</h1>
+            <p>Ukuran kertas besar: <strong>79 cm x 109 cm</strong></p>
+
+            <div class="input-section">
+                <h2>Input Dimensi Lunchbox (Bersih)</h2>
+                <label for="boxP">Panjang (cm):</label>
+                <input type="number" id="boxP" min="1" value="18" step="0.1">
+                <label for="boxL">Lebar (cm):</label>
+                <input type="number" id="boxL" min="1" value="12" step="0.1">
+                <label for="boxT">Tinggi (cm):</label>
+                <input type="number" id="boxT" min="1" value="7" step="0.1">
+                <button id="calculateBtn">Hitung Semua Potongan Lunchbox</button>
+            </div>
+
+            <div class="results-section">
+                <div class="result-card">
+                    <h3>Area Potong (Bersih) Lunchbox</h3>
+                    <div class="size-inputs">
+                        <label>L:</label>
+                        <input type="number" id="potongWidth" min="1" step="0.1" readonly>
+                        <label>T:</label>
+                        <input type="number" id="potongHeight" min="1" step="0.1" readonly>
+                    </div>
+                    <p>Jumlah: <strong id="resultPotong">0</strong> lembar</p>
+                    <div class="visualization-container" id="visPotong"></div>
+                </div>
+                <div class="result-card">
+                    <h3>Area Cetak Lunchbox (+0.5cm setiap sisi dari Potong)</h3>
+                    <div class="size-inputs">
+                        <label>L:</label>
+                        <input type="number" id="cetakWidth" min="1" step="0.1">
+                        <label>T:</label>
+                        <input type="number" id="cetakHeight" min="1" step="0.1">
+                    </div>
+                    <p>Jumlah: <strong id="resultCetak">0</strong> lembar</p>
+                    <button class="update-btn" data-target="cetak">Update Area Cetak</button>
+                    <div class="visualization-container" id="visCetak"></div>
+                </div>
+                <div class="result-card">
+                    <h3>Potong Kertas Lunchbox (+0.5cm setiap sisi dari Cetak)</h3>
+                    <div class="size-inputs">
+                        <label>L:</label>
+                        <input type="number" id="kertasWidth" min="1" step="0.1">
+                        <label>T:</label>
+                        <input type="number" id="kertasHeight" min="1" step="0.1">
+                    </div>
+                    <p>Jumlah: <strong id="resultKertas">0</strong> lembar</p>
+                    <button class="update-btn" data-target="kertas">Update Potong Kertas</button>
+                    <div class="visualization-container" id="visKertas"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
